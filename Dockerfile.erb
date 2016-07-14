@@ -1,0 +1,16 @@
+# encoding: UTF-8
+
+FROM <%= ENV.fetch('FROM') %>
+MAINTAINER The Blue Beluga <admin@bluebeluga.io>
+
+LABEL name="awscli"
+LABEL description="Alpine Linux Base with the AWS cli"
+LABEL git_revision="<%= ENV.fetch('GIT_REVISION') %>"
+
+RUN apk-install python py-pip && \
+    pip install --upgrade pip awscli && \
+    addgroup -S aws && \
+    adduser aws -D -S -h /home/aws -G aws -g 'AWS-cli User'
+
+USER aws
+WORKDIR /home/aws
