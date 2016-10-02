@@ -1,6 +1,9 @@
+# encoding: UTF-8
 
-FROM = bluebeluga/alpine
+GIT_REVISION=$(shell git rev-parse --short HEAD)
+
 REGISTRY = docker.io
-REPOSITORY = bluebeluga/alpine
+FROM = bluebeluga/alpine
+REPOSITORY = bluebeluga/awscli
 
 PUSH_REGISTRIES = $(REGISTRY)

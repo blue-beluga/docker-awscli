@@ -3,9 +3,11 @@
 FROM <%= ENV.fetch('FROM') %>
 MAINTAINER The Blue Beluga <admin@bluebeluga.io>
 
-LABEL name="awscli"
-LABEL description="Alpine Linux Base with the AWS cli"
-LABEL git_revision="<%= ENV.fetch('GIT_REVISION') %>"
+LABEL vendor="The Blue Beluga Company"
+LABEL io.bluebeluga.awscli.description="AWS cli"
+LABEL io.bluebeluga.awscli.version="<%= ENV.fetch('TAG') %>"
+LABEL io.bluebeluga.awscli.git-revision="<%= ENV.fetch('GIT_REVISION') %>"
+LABEL io.bluebeluga.awscli.release-date="<%= Time.now.strftime('%B %d, %Y %H:%M') %>"
 
 RUN apk-install python py-pip && \
     pip install --upgrade pip awscli && \
